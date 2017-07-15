@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.meijunjie.mybatis.dao.EmployeeMapper">
+
+<!-- #{} 表示一个占位符
+	${} 表示一个拼接符，它会引起sql注入的风险
+	-->
+ <select id="getEmployeeById" resultType="cn.meijunjie.mybatis.bean.Employee">
+ 	select id,last_name as lastName,email,gender from tab_employee where id = ${id}
+ </select>
+  <!-- 
+  <update id=""></update>
+  <delete id=""></delete>
+  <insert id=""></insert> -->
+</mapper>
