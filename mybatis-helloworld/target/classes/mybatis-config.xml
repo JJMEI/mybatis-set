@@ -14,11 +14,24 @@
 
 	<!-- 设置别名 -->
 	<!-- <typeAliases> <typeAlias type=""/> </typeAliases> @Alias注解同样也可以设置别名 -->
+	<settings>
+		<!-- 开启驼峰标识 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<!-- <plusin></plusin> mybatis 的插件是很重要的功能
+		
+		Executor(update,query,flushStatement,commit,rollback，常见的功能呢“
+	
+	-->
 
+	<!-- 该标签可以配置多个环境，dev test release  -->
 	<environments default="development">
+	
 		<environment id="development">
 			<transactionManager type="JDBC" />
-			<!-- 事务管理器 一般这里的配置都会被整合到spring中进行配置了 -->
+			<!-- 事务管理器 一般这里的配置都会被整合到spring中进行配置了  JDBC使用，MANAGER-->
+			
 			<dataSource type="POOLED">
 				<!-- 这里也是使用第三方的数据源 即数据源连接池 -->
 				<property name="driver" value="${jdbc.driver}" />
@@ -27,9 +40,10 @@
 				<property name="password" value="${jdbc.password}" />
 			</dataSource>
 		</environment>
+		
 		<environment id="test">
 			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
+			<dataSource type="POOLED"> <!-- 数据源类型 -->
 				<property name="driver" value="${jdbc.driver}" />
 				<property name="url" value="${jdbc.url}" />
 				<property name="username" value="${jdbc.username}" />
