@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import cn.meijunjie.mybatis.bean.Employee;
 import cn.meijunjie.mybatis.dao.EmployeeMapper;
 
 public class Test {
@@ -23,12 +24,20 @@ public class Test {
 		logger.info("构建SQLSessionFactory成功 {}" + sessionFactory.toString());
 		
 		//默认使用DefaultSqlSession
-		SqlSession session = sessionFactory.openSession();
+		SqlSession session = sessionFactory.openSession(true);
 		
 		//employeeMapper	$Proxy0  (id=49)	
 		EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class); //由JDK基于动态代理实现了EmployeeMapper接口的实现类
 		
-		System.out.println(employeeMapper.getEmployeeById(1));
+		//System.out.println(employeeMapper.getEmployeeById(1));
+		
+		Employee employee = new Employee();
+		employee.setlast_name("jack");;
+		employee.setEmail("meijunjie@163.com");
+		employee.setGender("female");
+		employeeMapper.addEmployee(employee);
+		//session.commit();
+		System.out.println(employee.getId());
 		session.close();
 		logger.info("成功关闭session");
 	}

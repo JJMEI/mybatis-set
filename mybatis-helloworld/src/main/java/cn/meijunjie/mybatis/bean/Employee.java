@@ -3,20 +3,22 @@ package cn.meijunjie.mybatis.bean;
 public class Employee {
 
 		private int id;
-		private String lastName;
+		private String last_name;
 		private String email;
 		private String gender;
+		
+		
 		public int getId() {
 			return id;
 		}
 		public void setId(int id) {
 			this.id = id;
 		}
-		public String getLastName() {
-			return lastName;
+		public String getlast_name() {
+			return last_name;
 		}
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
+		public void setlast_name(String last_name) {
+			this.last_name = last_name;
 		}
 		public String getEmail() {
 			return email;
@@ -32,7 +34,7 @@ public class Employee {
 		}
 		@Override
 		public String toString() {
-			return "Employee [id=" + id + ", lastName=" + lastName + ", email=" + email + ", gender=" + gender + "]";
+			return "Employee [id=" + id + ", last_name=" + last_name + ", email=" + email + ", gender=" + gender + "]";
 		}
 		
 		
