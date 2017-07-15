@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.meijunjie.mybatis.dao.BookDao">
+
+<!-- #{} 表示一个占位符
+	${} 表示一个拼接符，它会引起sql注入的风险
+	-->
+  <select id="selectBookById" resultType="cn.meijunjie.mybatis.domain.Book" parameterType="long">
+    select * from book where book_id = #{book_id}
+  </select>
+  
+  <insert id="insertBook" parameterType="cn.meijunjie.mybatis.domain.Book" >
+  	<selectKey keyProperty="bookId" resultType="int" order="AFTER">
+  		select last_insert_id()
+  	</selectKey>
+  	
+  	insert into book(book_id,name,number) values(#{book_id},#{name},#{number})
+  </insert>
+  <!-- 
+  <update id=""></update>
+  <delete id=""></delete>
+  <insert id=""></insert> -->
+</mapper>
