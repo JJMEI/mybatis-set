@@ -24,20 +24,23 @@ public class Test {
 		logger.info("构建SQLSessionFactory成功 {}" + sessionFactory.toString());
 		
 		//默认使用DefaultSqlSession
-		SqlSession session = sessionFactory.openSession(true);
+		SqlSession session = sessionFactory.openSession();
 		
 		//employeeMapper	$Proxy0  (id=49)	
 		EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class); //由JDK基于动态代理实现了EmployeeMapper接口的实现类
 		
-		//System.out.println(employeeMapper.getEmployeeById(1));
+		System.out.println(employeeMapper.getEmployeeById(1,"jack"));
 		
 		Employee employee = new Employee();
+		employee.setId(1);
 		employee.setlast_name("jack");;
 		employee.setEmail("meijunjie@163.com");
-		employee.setGender("female");
-		employeeMapper.addEmployee(employee);
-		//session.commit();
-		System.out.println(employee.getId());
+		employee.setGender("madsdsle");
+//		employeeMapper.addEmployee(employee);
+//		//session.commit();
+//		System.out.println(employee.getId());
+		employeeMapper.updateEmployee(employee);
+		session.commit();
 		session.close();
 		logger.info("成功关闭session");
 	}
